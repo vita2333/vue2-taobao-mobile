@@ -72,5 +72,6 @@ module.exports = {
     'vue/component-name-in-template-casing': ['error', 'kebab-case'],
     'vue/html-closing-bracket-newline': 2,
     '@typescript-eslint/no-unused-vars': ['error'],
+    'import/extensions': 0,
   },
 }

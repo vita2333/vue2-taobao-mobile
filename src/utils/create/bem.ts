@@ -51,7 +51,7 @@ function prefix(name: string, mods: Mods): Mods {
  * bem('el', 'mods')  =>  ["name__el", "name__el--mods"]
  * bem(['mod1', 'mod2'])  =>  ["name", ["name--mod1", "name--mod2"]
  */
-function createBEM(name: string) {
+export function createBEM(name: string) {
   return function(el?: Mods, mods?: Mods): Mods {
     if (el && typeof el !== 'string') {
       mods = el
