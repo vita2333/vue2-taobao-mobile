@@ -1,24 +1,29 @@
 module.exports = {
   root: true,
-  extends: ['plugin:vue/essential', '@vue/airbnb'],
+  extends: ['plugin:vue/essential', '@vue/airbnb', '@vue/typescript'],
+
   parserOptions: {
     parser: '@typescript-eslint/parser',
     ecmaVersion: 2018,
     sourceType: 'module',
-    extraFileExtensions: ['.vue']
+    extraFileExtensions: ['.vue'],
   },
+
   plugins: ['@typescript-eslint'],
+
   env: {
     es6: true,
     node: true,
     jest: true,
-    browser: true
+    browser: true,
   },
+
   globals: {
     window: false,
     document: false,
-    navigator: false
+    navigator: false,
   },
+
   rules: {
     'no-new': 0,
     'no-shadow': 0,
@@ -49,7 +54,7 @@ module.exports = {
       'error',
       {
         object: true,
-        array: false
+        array: false,
       },
     ],
     'import/order': 0,
@@ -66,6 +71,6 @@ module.exports = {
     'vue/name-property-casing': ['error', 'kebab-case'],
     'vue/component-name-in-template-casing': ['error', 'kebab-case'],
     'vue/html-closing-bracket-newline': 2,
-    '@typescript-eslint/no-unused-vars': ['error']
+    '@typescript-eslint/no-unused-vars': ['error'],
   },
 }
