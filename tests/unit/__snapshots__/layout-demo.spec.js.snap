@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders demo correctly 1`] = `
+<div>
+  <div class="vita-row">
+    <div class="vita-col vita-col--2">span 2</div>
+    <div class="vita-col vita-col--4">span 4</div>
+  </div>
+  <div class="vita-row" style="margin-left: -6px; margin-right: -6px;">
+    <div class="vita-col" style="padding-left: 6px; padding-right: 6px;">gutter 12</div>
+    <div class="vita-col" style="padding-left: 6px; padding-right: 6px;">gutter 12</div>
+  </div> <span class="vita-row vita-row--flex vita-row--align-left vita-row--justify-space-between"><div class="vita-col">flex left space-between</div> <div class="vita-col">flex left space-between</div></span>
+  <p class="vita-row vita-row--flex vita-row--align-bottom">
+    <div class="vita-col">flex bottom</div>
+    <div class="vita-col">flex bottom</div>
+  </p>
+</div>
+`;
