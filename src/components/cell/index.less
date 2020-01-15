@@ -1,0 +1,33 @@
+@import '../../style/var';
+@import '../../style/mixins/hairline';
+.vita-cell {
+  position: relative;
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
+  color: #000;
+  font-size: 14px;
+  line-height: 20px;
+  background-color: #fff;
+  padding: @padding-base;
+  &:not(:last-child)::after {
+    .hairline-bottom(@border-color, @padding-base);
+  }
+
+  &__label {
+    margin-top: 3px;
+    font-size: 12px;
+    color: #999;
+    line-height: 18px;
+  }
+  &__value {
+    flex-shrink: 0;
+    align-self: center;
+    padding-left: @padding-base;
+  }
+  &--large {
+    font-size: 16px;
+    line-height: 25px;
+  }
+}

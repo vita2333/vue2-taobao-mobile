@@ -2,13 +2,14 @@
   <div>
     <p>Layout</p>
     <layout></layout>
+    <p>Cell</p>
     <cell></cell>
   </div>
 </template>
 
 <script>
-import Layout from '../../tests/demo/layout.vue'
-import cell from '../../tests/demo/cell.vue'
+import Layout from '@/components/col/demo'
+import cell from '@/components/cell/demo'
 
 export default {
   components: { Layout, cell },
