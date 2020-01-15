@@ -6,10 +6,10 @@ Vue.use(Router)
 const router = new Router({
   mode: 'hash',
   routes: [
-    // {
-    //   path: '/row',
-    //   component: () => import('@/components/row/index.tsx'),
-    // },
+    {
+      path: '/',
+      component: () => import('@/views/Home.vue'),
+    },
   ],
 })
 
