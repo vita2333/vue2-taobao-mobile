@@ -36,8 +36,8 @@ export default {}
   color: #fff;
   text-align: center;
   background-clip: content-box;
+  font-size: 12px;
   margin-bottom: 10px;
-
   &:nth-child(odd) {
     background-color: #2a7654;
   }
