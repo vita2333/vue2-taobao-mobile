@@ -6,28 +6,40 @@
   box-sizing: border-box;
   width: 100%;
   overflow: hidden;
-  color: #000;
-  font-size: 14px;
-  line-height: 20px;
+  color: @text-black;
+  font-size: @font-size-base;
+  line-height: @font-size-base + 6;
   background-color: #fff;
+  justify-content: space-between;
   padding: @padding-base;
   &:not(:last-child)::after {
     .hairline-bottom(@border-color, @padding-base);
   }
-
+  &__title {
+    flex-grow: 1;
+  }
   &__label {
     margin-top: 3px;
-    font-size: 12px;
-    color: #999;
-    line-height: 18px;
+    font-size: @font-size-sm;
+    color: @text-gray;
+    line-height: @font-size-sm+6;
   }
   &__value {
     flex-shrink: 0;
     align-self: center;
     padding-left: @padding-base;
+    position: relative;
+    text-align: right;
+    font-size: @font-size-sm;
   }
+  &__right-icon {
+    align-self: center;
+    color: @text-gray;
+    @font-size-base+5;
+  }
+
   &--large {
-    font-size: 16px;
-    line-height: 25px;
+    font-size: @font-size-lg;
+    line-height: @font-size-lg+6;
   }
 }
