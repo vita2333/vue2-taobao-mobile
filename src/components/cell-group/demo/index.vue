@@ -3,7 +3,7 @@
     <vita-cell-group title="title">
       <vita-cell title="新消息提醒" is-link></vita-cell>
     </vita-cell-group>
-    <vita-cell-group >
+    <vita-cell-group>
       <vita-cell title="新消息提醒" is-link></vita-cell>
       <vita-cell title="新消息提醒" value="点击查看" is-link></vita-cell>
     </vita-cell-group>

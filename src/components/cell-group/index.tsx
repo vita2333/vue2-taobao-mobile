@@ -13,7 +13,7 @@ function CellGroup(
   const Group = <div>{slots.default?.()}</div>
   let Title
   if (props.title || slots.title) {
-    Title = <div class={bem('title')}>{slots.title ? slots.title : props.title}</div>
+    Title = <div class={bem('title')}>{slots.title ? slots.title() : props.title}</div>
   }
   return (
     <div class={bem()}>

@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders demo correctly 1`] = `
+<div>
+  <div class="vita-cell">
+    <div class="vita-cell__title"><span>新消息提醒</span></div><span class="vita-cell__right-icon"><i class="vita-icon vita-icon--arrow-right"></i></span>
+  </div>
+  <div class="vita-cell">
+    <div class="vita-cell__title"><span>新消息提醒</span></div>
+    <div class="vita-cell__value"><span>点击查看</span></div><span class="vita-cell__right-icon"><i class="vita-icon vita-icon--arrow-right"></i></span>
+  </div>
+  <div class="vita-cell">
+    <div class="vita-cell__title"><span>新消息提醒</span>
+      <div class="vita-cell__label">关闭后,手机淘宝不运行时将不受到新消息提醒,关闭后,手机淘宝不运行时将不受到新消息提醒</div>
+    </div>
+    <div class="vita-cell__value"><span>哈哈哈哈</span></div><span class="vita-cell__right-icon"><i class="vita-icon vita-icon--arrow-right"></i></span>
+  </div>
+  <div class="vita-cell vita-cell--large">
+    <div class="vita-cell__title"><span>新消息提醒</span>
+      <div class="vita-cell__label">关闭后,手机淘宝不运行时将不受到新消息提醒,关闭后,手机淘宝不运行时将不受到新消息提醒</div>
+    </div>
+    <div class="vita-cell__value"><span>哈哈哈哈</span></div>
+  </div>
+  <div class="vita-cell vita-cell--large">
+    <div class="vita-cell__title"><span>新消息提醒</span>
+      <div class="vita-cell__label">关闭后,手机淘宝不运行时将不受到新消息提醒,关闭后,手机淘宝不运行时将不受到新消息提醒</div>
+    </div>
+    <div class="vita-cell__value"><span>哈哈</span></div><span class="vita-cell__right-icon"><i class="vita-icon vita-icon--ellipsis"></i></span>
+  </div>
+</div>
+`;

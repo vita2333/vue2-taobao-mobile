@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CellGroup title slot 1`] = `
+<div class="vita-cell-group">
+  <div class="vita-cell-group__title">CustomTitle</div>
+  <div></div>
+</div>
+`;
+
+exports[`render slot 1`] = `
+<div class="vita-cell">
+  <div class="vita-cell__title">Custom Title<div class="vita-cell__label">Custom Label</div>
+  </div>
+  <div class="vita-cell__value"><span></span></div>
+</div>
+`;

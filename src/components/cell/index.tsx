@@ -1,10 +1,11 @@
 import { createNamespace } from '@/utils/create'
-import { CreateElement } from 'vue'
+import { CreateElement, RenderContext } from 'vue'
 import { DefaultProps, ScopedSlots } from '@/utils/types'
 import { isDef } from '@/utils'
 import { Mod } from '@/utils/create/bem'
 import Icon from '@/components/icon'
 import '@/components/icon/index.less'
+import { emit } from '@/utils/functional'
 
 const [createComponent, bem] = createNamespace('cell')
 export const cellProps = {
@@ -16,12 +17,7 @@ export const cellProps = {
   label: [Number, String],
 }
 
-function Cell(
-  h: CreateElement,
-  props: DefaultProps,
-  slots: ScopedSlots
-  // context: RenderContext<DefaultProps>
-) {
+function Cell(h: CreateElement, props: DefaultProps, slots: ScopedSlots, context: RenderContext) {
   const { title, label, size, value, isLink } = props
   const showTitle = slots.title || isDef(title)
 
@@ -60,12 +56,16 @@ function Cell(
     }
   }
 
+  function onClick(event: Event) {
+    emit(context, 'click', event)
+  }
+
   const classes: Mod = {}
   if (size) {
     classes[size] = size
   }
   return (
-    <div class={bem(classes)}>
+    <div class={bem(classes)} onclick={onClick}>
       {Title()}
       {Value()}
       {RightIcon()}
