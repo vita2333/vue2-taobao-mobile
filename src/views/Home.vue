@@ -6,12 +6,14 @@
     <cell></cell>
     <p>Cell group</p>
     <cell-group></cell-group>
+    <tabs></tabs>
   </div>
 </template>
 
 <script>
 import Layout from '@/components/col/demo'
 import cell from '@/components/cell/demo'
+import tabs from '@/components/tabs/demo'
 import cellGroup from '@/components/cell-group/demo'
 
 export default {
@@ -19,6 +21,7 @@ export default {
     Layout,
     cell,
     cellGroup,
+    tabs,
   },
 }
 </script>

@@ -1,7 +1,12 @@
 import { createNamespace } from '@/utils/create'
+import { isHidden } from '@/utils/dom/style'
+import { addUnit } from '@/utils/format/unit'
+import Title from './Title'
+import { ParentMixin } from '@/mixins/relation'
 
-const [createComponent, bem] = createNamespace('tabs')
+const [createComponent] = createNamespace('tabs')
 export default createComponent({
+  mixins: [ParentMixin('vitaTabs')],
   model: {
     prop: 'active',
   },
@@ -9,6 +14,7 @@ export default createComponent({
     return {
       position: '',
       currentIndex: null,
+      lineStyle: {},
     }
   },
   computed: {},
@@ -21,9 +27,31 @@ export default createComponent({
     setLine() {
       this.$nextTick(() => {
         const { titles } = this.$refs
-        if (!titles || !titles[this.currentIndex]) {
+        if (!titles || !titles[this.currentIndex] || isHidden(this.$el)) {
+          return
         }
+        const title = titles[this.currentIndex].$el
+        const width = title.offsetWidth / 2
+        const left = title.offsetLeft + title.offsetWidth / 2
+        this.lineStyle = {
+          width: addUnit(width),
+          transform: `translateX(${left}px) translateX(-50%)`,
+        }
+        console.log('thisLineStyle===', this.lineStyle)
       })
     },
+  },
+  render() {
+    console.log('thisChildren===', this.children)
+    const Nav = this.children.map((item, index) => (
+      <Title
+        ref="titles"
+        refInFor
+        title={item.title}
+        isActive={index === this.currentIndex}
+      ></Title>
+    ))
+    console.log('nav===', Nav)
+    return <div>{Nav}</div>
   },
 })
