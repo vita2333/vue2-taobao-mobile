@@ -15,7 +15,27 @@ export function ParentMixin(parent: string) {
 type ChildrenMixinThis = {
   disableBindRelation?: boolean
 }
-export function ChildrenMixin(parent: string, options: ChildrenMixinThis = {}) {
+type ChildrenMixinOptions = {
+  indexKey?: any
+}
+
+function flattenVNodes(vnodes: VNode[]) {
+  const result: VNode[] = []
+
+  function traverse(vnodes: VNode[]) {
+    vnodes.forEach((vnode) => {
+      result.push(vnode)
+      if (vnode.children) {
+        traverse(vnode.children)
+      }
+    })
+  }
+
+  traverse(vnodes)
+  return result
+}
+
+export function ChildrenMixin(parent: string, options: ChildrenMixinOptions = {}) {
   const indexKey = options.indexKey || 'index'
   return Vue.extend({
     inject: {
@@ -30,7 +50,24 @@ export function ChildrenMixin(parent: string, options: ChildrenMixinThis = {}) {
         }
         return (this as any)[parent]
       },
-
+      [indexKey]() {
+        this.bindRelation()
+        return this.parent.children.indexOf(this)
+      }
+    },
+    mounted() {
+      this.bindRelation()
+    },
+    methods: {
+      bindRelation() {
+        if (!this.parent || this.parent.children.indexOf(this) !== -1) {
+          return
+        }
+        const children = [...this.parent.children, this]
+        const vnodes = flattenVNodes(this.parent.$slots.default)
+        children.sort((a, b) => vnodes.indexOf(a.$vnode) - vnodes.indexOf(b.$vnode))
+        this.parent.children = children
+      }
     },
   })
 }
