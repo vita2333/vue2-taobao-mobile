@@ -58,6 +58,7 @@ export function ChildrenMixin(parent: string, options: ChildrenMixinOptions = {}
     mounted() {
       this.bindRelation()
     },
+    destroyed(){},
     methods: {
       bindRelation() {
         if (!this.parent || this.parent.children.indexOf(this) !== -1) {
