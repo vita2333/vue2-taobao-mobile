@@ -53,12 +53,16 @@ export function ChildrenMixin(parent: string, options: ChildrenMixinOptions = {}
       [indexKey]() {
         this.bindRelation()
         return this.parent.children.indexOf(this)
-      }
+      },
     },
     mounted() {
       this.bindRelation()
     },
-    destroyed(){},
+    beforeDestroy() {
+      if (this.parent) {
+        this.parent.children = this.parent.children.filter((item: any) => item !== this)
+      }
+    },
     methods: {
       bindRelation() {
         if (!this.parent || this.parent.children.indexOf(this) !== -1) {
@@ -68,7 +72,7 @@ export function ChildrenMixin(parent: string, options: ChildrenMixinOptions = {}
         const vnodes = flattenVNodes(this.parent.$slots.default)
         children.sort((a, b) => vnodes.indexOf(a.$vnode) - vnodes.indexOf(b.$vnode))
         this.parent.children = children
-      }
+      },
     },
   })
 }
