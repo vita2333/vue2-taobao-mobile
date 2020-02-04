@@ -17,7 +17,14 @@ export default createComponent({
       lineStyle: {},
     }
   },
-  computed: {},
+  computed: {
+    currentName() {
+      const activeTab = this.children[this.currentIndex]
+      if (activeTab) {
+        return activeTab.computedName
+      }
+    },
+  },
   methods: {
     // @exposed-api
     resize() {
@@ -42,7 +49,6 @@ export default createComponent({
     },
   },
   render() {
-    console.log('thisChildren===', this.children)
     const Nav = this.children.map((item, index) => (
       <Title
         ref="titles"

@@ -9,9 +9,11 @@
 <script>
 import Vue from 'vue'
 import tabs from '@/components/tabs'
+import tab from '@/components/tab'
 import '@/components/tabs/index.less'
 
 Vue.use(tabs)
+Vue.use(tab)
 export default {}
 </script>
 
