@@ -1,4 +1,6 @@
 import Vue from 'vue'
+import { on } from '@/utils/dom/event'
+
 const MIN_DISTANCE = 10
 function getDirection(x: number, y: number) {
   if (x > y && x > MIN_DISTANCE) {
@@ -47,7 +49,13 @@ export const TouchMixin = Vue.extend({
     },
     bindTouchEvent(el: HTMLElement) {
       const { onTouchStart, onTouchMove, onTouchEnd } = this as any
+      on(el, 'touchstart', onTouchStart)
+      on(el, 'touchmove', onTouchMove)
 
+      if (onTouchEnd) {
+        on(el, 'touchend', onTouchEnd)
+        on(el, 'touchcancel', onTouchEnd)
+      }
     },
   },
 })
