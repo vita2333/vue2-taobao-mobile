@@ -22,5 +22,24 @@ export default createComponent({
       return this.computedName() === this.parent.currentName
     },
   },
-  watch: {},
+  watch: {
+    'parent.currentIndex': function() {
+      this.inited = this.inited || this.isActive
+    },
+    title() {
+      this.parent.setLine()
+    },
+    inited(val) {
+      if (val) {
+        this.$nextTick(() => {
+          this.parent.$emit('rendered', this.computedName, this.title)
+        })
+      }
+    },
+    render() {
+      // const { slots, parent, isActive } = this
+      // const shouldRender = this.inited
+      // const Content = shouldRender ? slots() : h()
+    },
+  },
 })

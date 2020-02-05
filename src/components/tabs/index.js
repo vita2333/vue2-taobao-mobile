@@ -50,12 +50,7 @@ export default createComponent({
   },
   render() {
     const Nav = this.children.map((item, index) => (
-      <Title
-        ref="titles"
-        refInFor
-        title={item.title}
-        isActive={index === this.currentIndex}
-      ></Title>
+      <Title ref="titles" refInFor title={item.title} isActive={index === this.currentIndex} />
     ))
     console.log('nav===', Nav)
     return <div>{Nav}</div>

@@ -6,6 +6,7 @@
     <cell></cell>
     <p>Cell group</p>
     <cell-group></cell-group>
+    <p>Tabs</p>
     <tabs></tabs>
   </div>
 </template>
@@ -26,4 +27,10 @@ export default {
 }
 </script>
 
-<style scoped lang="less"></style>
+<style scoped lang="less">
+p {
+  border-top: 1px dotted #000000;
+  margin-top: 10px;
+  padding: 10px;
+}
+</style>
