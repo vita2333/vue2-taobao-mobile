@@ -1,6 +1,7 @@
 import Vue, { ComponentOptions, RenderContext, VNode, VueConstructor } from 'vue'
 import { camelize } from '@/utils/format/string'
 import { DefaultProps, FunctionComponent } from '@/utils/types'
+import { SlotsMixin } from '@/mixins/slots'
 
 export interface VitaComponentOptions extends ComponentOptions<Vue> {
   functional?: boolean // 使组件无状态 (没有 data) 和无实例 (没有 this 上下文)。他们用一个简单的 render 函数返回虚拟节点使它们渲染的代价更小。
@@ -61,6 +62,7 @@ export function createComponent(name: string) {
     }
     if (!sfc.functional) {
       sfc.mixins = sfc.mixins || []
+      sfc.mixins.push(SlotsMixin)
     }
     sfc.name = name
     sfc.install = install
