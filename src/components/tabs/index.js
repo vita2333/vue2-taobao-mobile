@@ -95,6 +95,12 @@ export default createComponent({
         index += diff
       }
     },
+    // emit event when clicked
+    onClick(index) {
+      const { title, computedName } = this.children[index]
+      this.setCurrentIndex(index)
+      this.$emit('click', computedName, title)
+    },
   },
   render() {
     const Nav = this.children.map((item, index) => (

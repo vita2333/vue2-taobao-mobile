@@ -19,3 +19,31 @@
     position: relative;
   }
 }
+
+.vita-tabs {
+  position: relative;
+  &__wrap {
+    overflow: hidden;
+  }
+  &__nav {
+    position: relative;
+    display: flex;
+    background-color: @white;
+    user-select: none;
+
+    box-sizing: content-box;
+    height: 100%;
+    padding-bottom: 15px; /* 15px padding to hide scrollbar in mobile safari */
+  }
+
+  &__line {
+    width: 20px;
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+    z-index: 1;
+    height: 3px;
+    background-color: @primary;
+    border-radius: 3px;
+  }
+}
