@@ -34,13 +34,12 @@ export default createComponent({
     genChildren() {
       return this.slots()
     },
-
-    render() {
-      return (
-        <div class={bem('content')} {...{ on: this.listeners }}>
-          {this.genChildren()}
-        </div>
-      )
-    },
+  },
+  render() {
+    return (
+      <div class={bem('content')} {...{ on: this.listeners }}>
+        {this.genChildren()}
+      </div>
+    )
   },
 })
