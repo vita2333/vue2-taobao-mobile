@@ -6,6 +6,8 @@ import Content from './Content'
 import { ParentMixin } from '@/mixins/relation'
 import { BindEventMixin } from '@/mixins/bind-event'
 import { isDef } from '@/utils'
+import { getVisibleHeight } from '@/utils/dom/scroll'
+import { scrollLeftTo } from '@/components/tabs/utils'
 
 const [createComponent, bem] = createNamespace('tabs')
 export default createComponent({
@@ -40,22 +42,46 @@ export default createComponent({
     },
   },
   watch: {
+    color: 'setLine',
     active(name) {
       if (name !== this.currentName) {
         this.setCurrentIndexByName(name)
       }
     },
+    scrollOffset() {
+      // todo sticky
+      return 0
+    },
   },
+  mounted() {
+    this.onShow()
+  },
+
+  activated() {
+    console.log('222===', 222)
+    this.onShow()
+    this.setLine()
+  },
+
   methods: {
     // @exposed-api
     resize() {
       this.setLine()
     },
+    onShow() {
+      this.$nextTick(() => {
+        this.inited = true
+        this.tabHeight = getVisibleHeight(this.$refs.wrap)
+        this.scrollIntoView(true)
+      })
+    },
     // update nav bar style
     setLine() {
+      console.log('111===', 111)
       this.$nextTick(() => {
         const { titles } = this.$refs
         if (!titles || !titles[this.currentIndex] || isHidden(this.$el)) {
+          console.log('titles===', titles)
           return
         }
         const title = titles[this.currentIndex].$el
@@ -101,6 +127,18 @@ export default createComponent({
       this.setCurrentIndex(index)
       this.$emit('click', computedName, title)
     },
+    // scroll active tab into view
+    scrollIntoView(immediate) {
+      const { titles } = this.$refs
+
+      if (!this.scrollable || !titles || !titles[this.currentIndex]) {
+        return
+      }
+      const { nav } = this.$refs
+      const title = titles[this.currentIndex].$el
+      const to = title.offsetLeft - (nav.offsetWidth - title.offsetWidth) / 2
+      scrollLeftTo(nav, to, immediate ? 0 : this.duration)
+    },
   },
   render() {
     const Nav = this.children.map((item, index) => (
@@ -120,12 +158,11 @@ export default createComponent({
         <div ref="nav" role="tablist" class={bem('nav')}>
           {this.slots('nav-left')}
           {Nav}
-          <div class={bem('line')}></div>
+          <div class={bem('line')} style={this.lineStyle}></div>
           {this.slots('nav-right')}
         </div>
       </div>
     )
-    console.log('wrap===', Wrap)
     return (
       <div class={bem()}>
         {Wrap}

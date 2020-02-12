@@ -1,7 +1,7 @@
 <template>
   <div>
     <vita-tabs>
-      <vita-tab :title="'tab' + index" v-for="index in 9" :key="index">{{ index }}</vita-tab>
+      <vita-tab :title="'tab' + index" v-for="index in 15" :key="index">{{ index }}</vita-tab>
     </vita-tabs>
   </div>
 </template>
